@@ -1,0 +1,18 @@
+<resources>
+    <!-- Phone -->
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="tab_max_width">264dp</dimen>
+    <dimen name="tab_padding_bottom">16dp</dimen>
+    <dimen name="tab_label">14sp</dimen>
+    <dimen name="custom_tab_layout_height">72dp</dimen>
+
+    <dimen name="list_primary_font_size">20sp</dimen>
+    <dimen name="list_secondary_font_size">18sp</dimen>
+
+    <dimen name="circle_height">40dp</dimen>
+
+</resources>

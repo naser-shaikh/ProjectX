@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgItmHomeGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:src="@drawable/usrgrey"
+        app:civ_border_color="@color/app_list_divider"
+        app:civ_border_width="2dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtItmHomeGroupName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Group Name"
+            android:textColor="@color/app_black_primary_color"
+            android:textSize="@dimen/list_primary_font_size" />
+
+        <TextView
+            android:id="@+id/txtItmHomeGroupDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dummy group details"
+            android:textColor="@color/app_black_secondary_color"
+            android:textSize="@dimen/list_secondary_font_size" />
+
+    </LinearLayout>
+
+</LinearLayout>
