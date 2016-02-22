@@ -8,7 +8,7 @@ import org.androidannotations.annotations.EBean;
 import java.util.ArrayList;
 
 /**
- * Created by nshaikh on 2/9/2016.
+ * Created by Naser Shaikh on 2/9/2016.
  */
 
 @EBean
@@ -18,7 +18,7 @@ public class ExpenseInfoFinder {
         ArrayList<ExpenseInfoModel> list = new ArrayList<>();
         for (int i = 0; i < 10; i++ ){
             ExpenseInfoModel model = new ExpenseInfoModel();
-            model.setExpenseName("Dummy Group Name "+i);
+            model.setExpenseName("Dummy GroupModel Name "+i);
             model.setExpenseDetails("Dummy Details " + i);
             list.add(model);
         }

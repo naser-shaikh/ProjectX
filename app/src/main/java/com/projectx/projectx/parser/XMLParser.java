@@ -8,7 +8,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 
 /**
- * Created by nshaikh on 2/4/2016.
+ * Created by Naser Shaikh on 2/4/2016.
  */
 public class XMLParser extends DefaultHandler {
     ArrayList<Resources> list =   null;

@@ -5,27 +5,21 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.webkit.CookieManager;
-import android.webkit.CookieSyncManager;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
 import com.projectx.projectx.R;
+import com.projectx.projectx.fragments.dialogs.CreateNewGroupDialogFragment_;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * Created by nshaikh on 2/5/2016.
+ * Created by Naser Shaikh on 2/5/2016.
+ * Creating new group *
  */
-@EActivity(R.layout.delete_me_layout)
+@EActivity(R.layout.activity_create_group)
 public class CreateGroupActivity extends AppCompatActivity {
 
     @ViewById
@@ -38,7 +32,7 @@ public class CreateGroupActivity extends AppCompatActivity {
     ImageView mImgJoin;
 
     @AfterViews
-     void postOnCreate() {
+    void postOnCreate() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Create Group");
@@ -54,7 +48,16 @@ public class CreateGroupActivity extends AppCompatActivity {
 
         mImgCreate.setBackground(drawable);
         mImgJoin.setBackground(drawable);
+    }
 
+    @Click(R.id.imgCreateGroupJoin)
+    void onJoinClicked() {
+
+    }
+
+    @Click(R.id.imgCreateGroupCreate)
+    void onCreateClick(){
+        new CreateNewGroupDialogFragment_.FragmentBuilder_().build().show(getSupportFragmentManager(), "CreateNewGroup");
     }
 
 

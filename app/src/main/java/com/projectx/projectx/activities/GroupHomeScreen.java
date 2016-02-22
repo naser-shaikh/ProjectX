@@ -24,10 +24,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by nshaikh on 2/2/2016.
+ * Created by Naser Shaikh on 2/2/2016.
  */
 @EActivity(R.layout.activity_group_home)
 public class GroupHomeScreen extends AppCompatActivity {
+
+    @Override
+    public void setTheme(int resid) {
+        super.setTheme(resid);
+    }
 
     @ViewById(R.id.toolbar)
     Toolbar toolbar;
@@ -43,7 +48,7 @@ public class GroupHomeScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle("X Group Screen");
+        getSupportActionBar().setTitle("X GroupModel Screen");
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

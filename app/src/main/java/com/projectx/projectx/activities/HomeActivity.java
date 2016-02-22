@@ -1,22 +1,18 @@
 package com.projectx.projectx.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.projectx.projectx.R;
-import com.projectx.projectx.adapters.HomeGroupsListAdapter;
-import com.projectx.projectx.models.GroupsInfoModel;
-import com.projectx.projectx.models.Resources;
-import com.projectx.projectx.parser.XMLParser;
-import com.projectx.projectx.utils.GroupInfoFinder;
+import com.projectx.projectx.adapters.HomeGroupHolder;
+import com.projectx.projectx.database.database_managers.GroupManager;
+import com.projectx.projectx.database.models.GroupModel;
+import com.projectx.projectx.utils.Ui;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -24,19 +20,14 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.ViewById;
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
+import uk.co.ribot.easyadapter.EasyAdapter;
 
 /*
     App Name: FairShare, FlatMates
+    Home Activity which shows the options to create a new group or view existing group
  */
 
 @EActivity(R.layout.activity_home)
@@ -54,46 +45,51 @@ public class HomeActivity extends AppCompatActivity {
     @ViewById(R.id.txtHomeEmptyGroupList)
     TextView mTxtEmptyListMsg;
 
-    @Bean
-    HomeGroupsListAdapter adapter;
-
-    @Bean
-    GroupInfoFinder finder;
-
+    /**
+     * After onCreate we are setting title name
+     */
     @AfterViews
-    void setTitle(){
+    void setTitle() {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Project X Home Screen");
     }
 
+    /**
+     * On click of create group, starting create group activity which
+     * is responsible for creating new group
+     */
     @Click(R.id.btnHomeCreateGroup)
-    void createNewGroup(){
-        startNewActivity(CreateGroupActivity_.class);
+    void createNewGroup() {
+        Ui.startActivity(this, CreateGroupActivity_.class);
     }
 
-    void startNewActivity(Class cls){
-        startActivity(new Intent(this, cls));
-    }
-
+    /**
+     * Here we are getting the list of groups, either user created or he is in one of it.
+     * if the list is empty we are showing the empty list massage.
+     */
     @AfterViews
-    void startAlgo(){
-        ArrayList<GroupsInfoModel> list = finder.dummyModels();
+    void showGroupList() {
+        ArrayList<GroupModel> list = new GroupManager(getApplicationContext()).getAllGroupsList();
 
-        if (list.size() == 0){
+        if (list.size() == 0) {
             mLstHomeGroups.setVisibility(View.GONE);
             mTxtEmptyListMsg.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             mLstHomeGroups.setVisibility(View.VISIBLE);
             mTxtEmptyListMsg.setVisibility(View.GONE);
-            mLstHomeGroups.setAdapter(adapter);
+            mLstHomeGroups.setAdapter(new EasyAdapter<>(this, HomeGroupHolder.class, list));
         }
-        //btnCreateNewGroup.setBackground(colorChanger("#00ff00"));
-        //parseData();
+
     }
 
+    /**
+     * OnItemClick listener listen for item click event on the list view
+     *
+     * @param model
+     */
     @ItemClick(R.id.lstHomeGroupsList)
-    void listItemClicked(GroupsInfoModel model){
-        startNewActivity(GroupHomeScreen_.class);
+    void listItemClicked(GroupModel model) {
+        Ui.startActivity(this, GroupHomeScreen_.class);
     }
 
 }

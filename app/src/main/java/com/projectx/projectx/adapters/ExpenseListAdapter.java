@@ -16,7 +16,7 @@ import org.androidannotations.annotations.EBean;
 import java.util.ArrayList;
 
 /**
- * Created by nshaikh on 2/9/2016.
+ * Created by Naser Shaikh on 2/9/2016.
  */
 @EBean
 public class ExpenseListAdapter extends BaseAdapter {

@@ -13,7 +13,7 @@ import org.androidannotations.annotations.ViewById;
 import org.w3c.dom.Text;
 
 /**
- * Created by nshaikh on 2/9/2016.
+ * Created by Naser Shaikh on 2/9/2016.
  */
 @EViewGroup(R.layout.item_group_expense_list)
 public class ExpenseInfoView extends LinearLayout {
